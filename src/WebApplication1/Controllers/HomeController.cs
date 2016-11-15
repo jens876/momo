@@ -27,10 +27,11 @@ namespace WebApplication1.Controllers
 		public IActionResult Jens()
 		{
 			HttpRequest x = HttpContext.Request;
-			Task<string> task = GetProductAsync(x.Scheme+"://"+x.Host+(x.PathBase.HasValue? "/"+x.PathBase:"")+"/api/data");
+			String myPathToUse = x.Scheme + "://" + x.Host + (x.PathBase.HasValue ? "/" + x.PathBase : "") + "/api/data/1111";
+			Task<string> task = GetProductAsync(myPathToUse);
 			task.Wait();
 
-			ViewData["Message"]=x.Path;
+			ViewData["Message"]= myPathToUse;
 			ViewData["Response"] = task.Result;
 
 			return View();
