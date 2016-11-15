@@ -27,7 +27,7 @@ namespace WebApplication1.Controllers
 		public IActionResult Jens()
 		{
 			HttpRequest x = HttpContext.Request;
-			Task<string> task = GetProductAsync(x.Scheme+"://"+x.Host+(x.PathBase.HasValue? "/"+x.PathBase:"")+"/api/tc");
+			Task<string> task = GetProductAsync(x.Scheme+"://"+x.Host+(x.PathBase.HasValue? "/"+x.PathBase:"")+"/api/data");
 			task.Wait();
 
 			ViewData["Message"]=x.Path;
