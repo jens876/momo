@@ -21,21 +21,27 @@
 		ct.textBaseline = "alphabetic";
 		ct.fillText("Da bin ich!");
 	}*/
-	function textInCanvas() {
+	function textInCanvas(Headline) {
 		ctCustomer.beginPath();
 		ctCustomer.moveTo(0, 100);
 		ctCustomer.lineTo(400, 100);
 		ctCustomer.stroke();
 
 		ctCustomer.textBaseline = "alphabetic";
-		ctCustomer.fillText("Da bin ich!",10 ,100);
+		ctCustomer.fillText(Headline,10 ,100);
 	}
 </script>
 </head>
 <body>
-	<canvas id="customerInfo" width="2800" height="220"></canvas>
-	<canvas id="chartAction" width="2800" height="1200"></canvas>
-	<canvas id="chartNoAction" width="2800" height="1200"></canvas>
+	<canvas id="customerInfo" width="2800" height="180"
+			style="border:solid 2px #000000">
+	</canvas>
+	<canvas id="chartAction" width="2800" height="1200"
+			style="border:solid 2px #000000">
+	</canvas>
+	<canvas id="chartNoAction" width="2800" height="1200"
+			style="border:solid 2px #000000">
+	</canvas>
 	<script>
 	window.onerror = fehlerBehandlung;
 	document.write("<p>First!<p>");
@@ -50,10 +56,10 @@
 		ctCustomer.fillStyle = "#000000";
 		ctCustomer.lineWidth = 1;
 		ctCustomer.strokeStyle = "#000000";
-		ctCustomer.font = "italic bold 50px Arial";
+		ctCustomer.font = "italic bold 50px Courier";
 
 		//textInCanvas(ctCustomer);
-		textInCanvas();
+		textInCanvas("His majesty Henry VIII. (keine Aktion) - vorhandenes Geld");
 		
 		var data = {
 			labels : [],
