@@ -31,8 +31,8 @@ namespace WebApplication1.Controllers
             //product.ExpiryDate = new DateTime(2008, 12, 28);
             //product.Price = 3.99M;
             //product.Sizes = new string[] { "Small", "Medium", "Large" };
-            
- string output = JsonConvert.SerializeObject(product);
+
+            string output = JsonConvert.SerializeObject(product);
 
             ViewData["Message"] = "Your application description page.";
 
@@ -54,7 +54,7 @@ namespace WebApplication1.Controllers
 
         static async Task<String> GetProductAsync(string path)
         {
-            String sproduct="";
+            String sproduct = "";
             HttpResponseMessage response = await m_httpClient.GetAsync(path);
             if (response.IsSuccessStatusCode)
             {
@@ -68,10 +68,10 @@ namespace WebApplication1.Controllers
             Task<String> task = GetProductAsync("http://localhost:3167/api/tc");
             task.Wait();
 
-            String response =task.Result;
+            String response = task.Result;
 
 
-                ViewData["Message"] = response;
+            ViewData["Message"] = response;
 
             return View();
         }
@@ -79,6 +79,12 @@ namespace WebApplication1.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        public IActionResult func1()
+        {
+            return About();
+
         }
     }
 }
