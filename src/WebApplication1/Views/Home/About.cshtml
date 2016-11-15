@@ -16,14 +16,15 @@
 	</canvas>
 	<form id="idForm1">
 		<input id="idCheck1" type="checkbox"> Konto automatisch
-		aktualisieren <input id="idCheck2" type="checkbox"> 100 € Geld
-		soll immer da sein
+		aktualisieren
 	</form>
-
-@section scripts {
+	<form id="idForm2">
+		<input id="idCheck2" type="checkbox"> 100 € Geld soll immer da
+		sein
+	</form>
 	<script>
-		window.onerror = fehlerBehandlung;
-		document.write("<p>First!<p>");
+	//	window.onerror = fehlerBehandlung;
+		// document.write("<p>First!<p>");
 		try {
 			//document.write("<p>Vor allem!</p>");
 			Chart.defaults.global.defaultFontColor = "#F0F";
@@ -96,4 +97,3 @@
 		});
 		meinHandler("idCheck1","click", check);
 	</script>
-}
