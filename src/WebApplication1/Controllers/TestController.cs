@@ -20,14 +20,14 @@ namespace WebApplication1.Controllers
             MySqlConnection connection = new MySqlConnection
             {
                 //ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;"
-                ConnectionString = "server=172.30.182.32;user id=microcredit;password=M1crocred1t;persistsecurityinfo=True;port=3306;Encrypt=false;"
+                ConnectionString = "server=172.30.86.135;user id=microcredit;password=M1crocred1t;persistsecurityinfo=True;port=3306;Encrypt=false;"
             };
             connection.Open();
 
-            MySqlCommand command = new MySqlCommand("create database IF NOT EXISTS db1;", connection);
+            MySqlCommand command = new MySqlCommand("create database IF NOT EXISTS momo1db;", connection);
             command.ExecuteNonQuery();
 
-            command = new MySqlCommand("use db1;", connection);
+            command = new MySqlCommand("use momo1db;", connection);
             command.ExecuteNonQuery();
 
             command = new MySqlCommand("create table IF NOT EXISTS customers (cu_id integer AUTO_INCREMENT,cu_name VARCHAR(255) NOT NULL,PRIMARY KEY(cu_id));", connection);
