@@ -12,15 +12,6 @@
 			+ "\nZeile: " + zeile);
 	}
 	
-/*	function textInCanvas(ct) {
-		ct.beginPath();
-		ct.moveTo(0, 100);
-		ct.lineTo(400, 100);
-		ct.stroke();
-
-		ct.textBaseline = "alphabetic";
-		ct.fillText("Da bin ich!");
-	}*/
 	function textInCanvas(Headline) {
 		ctCustomer.beginPath();
 		ctCustomer.moveTo(0, 100);
@@ -30,19 +21,30 @@
 		ctCustomer.textBaseline = "alphabetic";
 		ctCustomer.fillText(Headline,10 ,100);
 	}
+
+	// eventhandler
+	function check(){
+		var f = document.getElementById("idForm");
+		f.noValidate = !f.noValidate;
+	}
 </script>
 </head>
 <body>
 	<canvas id="customerInfo" width="2800" height="180"
-			style="border:solid 2px #000000">
+		style="border: solid 2px #000000">
 	</canvas>
 	<canvas id="chartAction" width="2800" height="1200"
-			style="border:solid 2px #000000">
+		style="border: solid 2px #000000">
 	</canvas>
 	<canvas id="chartNoAction" width="2800" height="1200"
-			style="border:solid 2px #000000">
+		style="border: solid 2px #000000">
 	</canvas>
+	<form id="idForm">
+			<input id="idCheck" type="checkbox"> Konto automatisch aktualisieren
+	</form> 
+	<script src="eh.js"> </script>
 	<script>
+	/*
 	window.onerror = fehlerBehandlung;
 	document.write("<p>First!<p>");
 	try {
@@ -116,6 +118,7 @@
 				responsive : false
 			}
 		});
+*/
 	</script>
 
 </body>
