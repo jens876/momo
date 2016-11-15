@@ -4,10 +4,10 @@
 }
 
 function textInCanvas(Headline) {
-    ctCustomer.beginPath();
+/*    ctCustomer.beginPath();
     ctCustomer.moveTo(0, 100);
     ctCustomer.lineTo(400, 100);
-    ctCustomer.stroke();
+    ctCustomer.stroke(); */
 
     ctCustomer.textBaseline = "alphabetic";
     ctCustomer.fillText(Headline,10 ,100);
