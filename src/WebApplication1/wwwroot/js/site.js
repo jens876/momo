@@ -2,6 +2,7 @@
     alert("Fehler: " + fehler + "\nDatei: " + datei
         + "\nZeile: " + zeile);
 }
+
 function textInCanvas(Headline) {
     ctCustomer.beginPath();
     ctCustomer.moveTo(0, 100);
@@ -11,6 +12,7 @@ function textInCanvas(Headline) {
     ctCustomer.textBaseline = "alphabetic";
     ctCustomer.fillText(Headline,10 ,100);
 }
+
 function meinHandler(id, ereignis, funktion) {
 	if(window.addEventlistener)
 		document.getElementById(id)
