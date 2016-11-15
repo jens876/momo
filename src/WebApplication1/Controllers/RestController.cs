@@ -20,9 +20,9 @@ namespace WebApplication1.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public JsonResult Get(int id)
         {
-            return "value";
+			return Json("value"+id.ToString());
         }
 
         // POST api/values
