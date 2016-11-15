@@ -24,7 +24,7 @@
 	</form>
 @section scripts {
 	<script>
-	//	window.onerror = fehlerBehandlung;
+		window.onerror = fehlerBehandlung;
 		// document.write("<p>First!<p>");
 		try {
 			//document.write("<p>Vor allem!</p>");
@@ -37,7 +37,13 @@
 			ctCustomer.fillStyle = "#000000";
 			ctCustomer.lineWidth = 1;
 			ctCustomer.strokeStyle = "#000000";
-			ctCustomer.font = "italic bold 50px Courier";
+			ctCustomer.font = "italic bold 24px Courier";
+			var gradient=ctCustomer.createLinearGradient(0,0,cCustomer.width,0);
+			gradient.addColorStop("0","magenta");
+			gradient.addColorStop("0.5","blue");
+			gradient.addColorStop("1.0","red");
+			// Fill with gradient
+			ctCustomer.fillStyle=gradient;
 
 			//textInCanvas(ctCustomer);
 			textInCanvas("His majesty Henry VIII. (keine Aktion) - vorhandenes Geld");
