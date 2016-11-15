@@ -21,3 +21,9 @@ function meinHandler(id, ereignis, funktion) {
 		document.getElementById(id)
 			.attachEvent("on" + ereignis, funktion);
 }
+
+	// eventhandler
+function check() {
+	var f = document.getElementById("idForm");
+	f.noValidate = !f.noValidate;
+}
