@@ -19,8 +19,8 @@ namespace WebApplication1.Controllers
         {
             MySqlConnection connection = new MySqlConnection
             {
-                ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;"
-                //                ConnectionString = "server=localhost;user id=<User>;password=<Password>;persistsecurityinfo=True;port=<Port>;database=sakila"
+                //ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;"
+                ConnectionString = "server=172.30.182.32;user id=microcredit;password=M1crocred1t;persistsecurityinfo=True;port=3306;Encrypt=false;"
             };
             connection.Open();
 
