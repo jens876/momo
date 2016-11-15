@@ -47,6 +47,7 @@ namespace WebApplication1.Controllers
             
  string output = JsonConvert.SerializeObject(product);
 
+
             ViewData["Message"] = "Your application description page.";
 
             return View();
@@ -67,7 +68,7 @@ namespace WebApplication1.Controllers
 
         static async Task<String> GetProductAsync(string path)
         {
-            String sproduct="";
+            String sproduct = "";
             HttpResponseMessage response = await m_httpClient.GetAsync(path);
             if (response.IsSuccessStatusCode)
             {
@@ -86,6 +87,12 @@ namespace WebApplication1.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        public IActionResult func1()
+        {
+            return About();
+
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,6 +17,25 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public JsonResult Get()
         {
+            MySqlConnection connection = new MySqlConnection
+            {
+                //ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;"
+                ConnectionString = "server=172.30.86.135;user id=microcredit;password=M1crocred1t;persistsecurityinfo=True;port=3306;Encrypt=false;"
+            };
+            connection.Open();
+
+            MySqlCommand command = new MySqlCommand("create database IF NOT EXISTS momo1db;", connection);
+            command.ExecuteNonQuery();
+
+            command = new MySqlCommand("use momo1db;", connection);
+            command.ExecuteNonQuery();
+
+            command = new MySqlCommand("create table IF NOT EXISTS customers (cu_id integer AUTO_INCREMENT,cu_name VARCHAR(255) NOT NULL,PRIMARY KEY(cu_id));", connection);
+            command.ExecuteNonQuery();
+
+            connection.Close();
+            
+
             return Json(new string[] { "value1", "value2" });
         }
 

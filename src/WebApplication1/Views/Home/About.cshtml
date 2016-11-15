@@ -5,25 +5,27 @@
 <h3>@ViewData["Message"]</h3>
 
 <p>Use this area to provide additional information.</p>
-	<canvas id="customerInfo" width="2800" height="180"
+	<canvas id="customerInfo" width="1400" height="180"
 		style="border: solid 2px #000000">
 	</canvas>
-	<canvas id="chartAction" width="2800" height="1200"
+	<canvas id="chartAction" width="1400" height="600"
 		style="border: solid 2px #000000">
 	</canvas>
-	<canvas id="chartNoAction" width="2800" height="1200"
+	<canvas id="chartNoAction" width="1400" height="600"
 		style="border: solid 2px #000000">
 	</canvas>
 	<form id="idForm1">
 		<input id="idCheck1" type="checkbox"> Konto automatisch
-		aktualisieren <input id="idCheck2" type="checkbox"> 100 € Geld
-		soll immer da sein
+		aktualisieren
 	</form>
-
+	<form id="idForm2">
+		<input id="idCheck2" type="checkbox"> 100 € Geld soll immer da
+		sein
+	</form>
 @section scripts {
 	<script>
 		window.onerror = fehlerBehandlung;
-		document.write("<p>First!<p>");
+		// document.write("<p>First!<p>");
 		try {
 			//document.write("<p>Vor allem!</p>");
 			Chart.defaults.global.defaultFontColor = "#F0F";
@@ -35,7 +37,13 @@
 			ctCustomer.fillStyle = "#000000";
 			ctCustomer.lineWidth = 1;
 			ctCustomer.strokeStyle = "#000000";
-			ctCustomer.font = "italic bold 50px Courier";
+			ctCustomer.font = "italic bold 24px Courier";
+			var gradient=ctCustomer.createLinearGradient(0,0,cCustomer.width,0);
+			gradient.addColorStop("0","magenta");
+			gradient.addColorStop("0.5","blue");
+			gradient.addColorStop("1.0","red");
+			// Fill with gradient
+			ctCustomer.fillStyle=gradient;
 
 			//textInCanvas(ctCustomer);
 			textInCanvas("His majesty Henry VIII. (keine Aktion) - vorhandenes Geld");
