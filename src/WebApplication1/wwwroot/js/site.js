@@ -28,24 +28,6 @@ function check() {
 	f.noValidate = !f.noValidate;
 }
 
-$(document).ready(function () {
-
-    var x = $('#clickmeplease');
-    if (x)
-    {
-        x.click(function ()
-        {
-            var chart = chartInstance1;
-            var data = chart.config.data.datasets[0].data;
-            for (var i = 0; i < data.length; ++i) {
-                data[i] += 100;
-            }
-            chart.update();
-        });
-    }
-
-});
-
 window.onerror = fehlerBehandlung;
 // document.write("<p>First!<p>");
 try {
@@ -139,6 +121,7 @@ try {
 					borderDash : [],
 					borderDashOffset : 0.0,
 					borderJoinStyle : 'miter',
+					borderwidth : 1,
 					pointBorderColor : "rgba(0,0,0,1)",
 					pointBackgroundColor : "#fff",
 					pointBorderWidth : 1,
@@ -202,5 +185,5 @@ var chartInstance2 = new Chart(ctxChartNoAction, {
 		responsive : false
 	}
 });
-meinHandler("#idCheck1", "click", check);
+meinHandler("idCheck1", "click", check);
 
