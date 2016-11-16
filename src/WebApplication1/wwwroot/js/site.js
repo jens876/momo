@@ -31,7 +31,7 @@ function check() {
 function getData(id) {
     // Assign handlers immediately after making the request,
     // and remember the jqXHR object for this request
-    var jqxhr = $.ajax(apiUrl)
+    var jqxhr = $.ajax(apiUrl+'/'+id)
       .done(function (data) {
           var chart = chartInstance1;
           chart.config.data.datasets[0].data = data.momoBalances;
@@ -201,9 +201,17 @@ $(document).ready(function () {
     } catch (e) {
     }
 
-    getData('without');
+    getData('withoutmomo');
     var x = $('#idCheck1');
     x.click(function () {
-        getData('withmomo');
+        var checkbox = $('#idCheck1');
+        if (checkbox[0].checked)
+        {
+            getData('withmomo');
+        }
+        else
+        {
+            getData('withoutmomo');
+        }
     });
 });
