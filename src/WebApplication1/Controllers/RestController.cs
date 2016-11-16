@@ -60,6 +60,45 @@ namespace WebApplication1.Controllers
 			return Json(x);
 		}
 
+		// GET api/values/give/5000
+		[HttpGet("{id}/{sockelbetrag}")] //possible values: 'give', 'take', 'givetake' and 'plain'
+		public JsonResult Get(string id, int sockelbetrag)
+		{
+			ChartData x = new ChartData();
+
+
+			Account account = new Account();
+			account.m_iban = "DE00999940000667334953";// "DE99999940000317899806";
+			if (id.Equals("givetake"))
+			{
+				account.m_giveMoney = true;
+				account.m_takeMoney = true;
+			}
+			else if (id.Equals("give"))
+			{
+				account.m_giveMoney = true;
+				account.m_takeMoney = false;
+			}
+			else if (id.Equals("take"))
+			{
+				account.m_giveMoney = false;
+				account.m_takeMoney = true;
+			}
+			account.LoadDays(20, 20);
+			for (int i = 0; i < account.m_days.Count; i++)
+			{
+				SingleDay day = account.m_days[i];
+				x.accountBalances.Add((double)day.m_realBalance);
+				if (account.m_giveMoney || account.m_takeMoney)
+				{
+					x.momoBalances.Add((double)(day.m_realBalance + day.m_fictionalBalanceChange));
+				}
+				x.balanceLabels.Add(day.m_date.ToString("dd."));
+			}
+
+
+			return Json(x);
+		}
 		// POST api/values
 		[HttpPost]
         public void Post([FromBody]string value)
