@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
 		public String GetApiUrl()
 		{
 			HttpRequest x = HttpContext.Request;
-			return x.Scheme + "://" + x.Host + (x.PathBase.HasValue ? "/" + x.PathBase : "") + "/api/data";
+			return x.Scheme + "://" + x.Host +  x.PathBase + "/api/data";
 		}
 
         public IActionResult Index()

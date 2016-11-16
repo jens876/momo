@@ -31,7 +31,7 @@ function check() {
 function getData(id) {
     // Assign handlers immediately after making the request,
     // and remember the jqXHR object for this request
-    var jqxhr = $.ajax(apiUrl+'/'+id)
+    var jqxhr = $.ajax(apiUrl + '/' + id)
       .done(function (data) {
           var chart = chartInstance1;
           chart.config.data.datasets[0].data = data.momoBalances;
@@ -51,19 +51,20 @@ $(document).ready(function () {
     // document.write("<p>First!<p>");
     try {
         //document.write("<p>Vor allem!</p>");
-        Chart.defaults.global.defaultFontColor = "#F0F";
+        Chart.defaults.global.defaultFontColor = "#000";
         Chart.defaults.global.defaultFontSize = 20;
         Chart.defaults.global.responsive = true;
 
         var dg = -500;
         var wg = -1000;
         var ml = 800;
+        var gruen = "rgba(0,255,0,1)";
 
         var data = {
             labels: [],
             datasets: [
                     {
-                        label: "Verlauf mit MoMo",
+                        label: "Mit Mo|Mo",
                         fill: true,
                         lineTension: 0.1,
                         backgroundColor: "rgba(75,192,192,1)",
@@ -88,7 +89,7 @@ $(document).ready(function () {
                         label: "Saldoverlauf",
                         fill: true,
                         lineTension: 0.1,
-                        backgroundColor: "rgba(255,100,100,0.4)",
+                        backgroundColor: "rgba(255,100,100,1)",
                         borderColor: "rgba(255,255,255,1)",
                         borderCapStyle: 'butt',
                         borderDash: [],
@@ -98,7 +99,7 @@ $(document).ready(function () {
                         pointBackgroundColor: "#fff",
                         pointBorderWidth: 1,
                         pointHoverRadius: 5,
-                        pointHoverBackgroundColor: "rgba(255,100,100,0.4)",
+                        pointHoverBackgroundColor: "rgba(255,100,100,1)",
                         pointHoverBorderColor: "rgba(255,0,0,1)",
                         pointHoverBorderWidth: 2,
                         pointRadius: 1,
@@ -110,8 +111,9 @@ $(document).ready(function () {
                         label: "Sockelbetrag",
                         fill: false,
                         lineTension: 0.1,
-                        backgroundColor: "rgba(255,100,100,0.4)",
-                        borderColor: "rgba(0,255,0,1)",
+                        backgroundColor: "rgba(0,100,100,0.4)",
+                        //borderColor: "rgba(0,255,0,1)",
+                        borderColor: gruen,
                         borderCapStyle: 'butt',
                         borderDash: [],
                         borderDashOffset: 0.0,
@@ -134,7 +136,7 @@ $(document).ready(function () {
                         spanGaps: false,
                     },
                     {
-                        label: "Dispogrenze (8%)",
+                        label: "Dispowarnung",
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(255,100,100,0.4)",
@@ -161,7 +163,7 @@ $(document).ready(function () {
                         spanGaps: false,
                     },
                     {
-                        label: "Bloß nicht tiefer (20%)",
+                        label: "Schuldenwarnung",
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(255,100,100,0.4)",
@@ -201,17 +203,25 @@ $(document).ready(function () {
     } catch (e) {
     }
 
-    getData('withoutmomo');
-    var x = $('#idCheck1');
-    x.click(function () {
-        var checkbox = $('#idCheck1');
-        if (checkbox[0].checked)
-        {
-            getData('withmomo');
-        }
-        else
-        {
-            getData('withoutmomo');
-        }
-    });
+    getData('plain');
+    $('#idCheck1').click(getDependingData);
+    $('#idCheck2').click(getDependingData);
 });
+
+
+function getDependingData() {
+    var checkbox1Checked = $('#idCheck1')[0].checked;
+    var checkbox2Checked = $('#idCheck2')[0].checked;
+    if (checkbox1Checked && checkbox2Checked) {
+        getData('givetake');
+    }
+    else if (checkbox1Checked) {
+        getData('take');
+    }
+    else if (checkbox2Checked) {
+        getData('give');
+    }
+    else {
+        getData('plain');
+    }
+};

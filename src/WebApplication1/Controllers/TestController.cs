@@ -31,8 +31,8 @@ namespace WebApplication1.Controllers
             command = new MySqlCommand("create table IF NOT EXISTS balances (ba_debtorAccountNumber varchar(22), ba_date date,ba_balance double);", connection);
             command.ExecuteNonQuery();
 
-            command = new MySqlCommand("insert into balances(ba_debtorAccountNumber,ba_date,ba_balance) values (\"DE99999940000317899806\",\"2016-11-16\",12.34);", connection);
-            command.ExecuteNonQuery();
+            //command = new MySqlCommand("insert into balances(ba_debtorAccountNumber,ba_date,ba_balance) values (\"DE99999940000317899806\",\"2016-11-16\",12.34);", connection);
+            //command.ExecuteNonQuery();
 
             command = new MySqlCommand("select * from balances", connection);
 

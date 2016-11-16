@@ -20,31 +20,37 @@ namespace WebApplication1.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] //possible values: 'give', 'take', 'givetake' and 'plain'
         public JsonResult Get(string id)
         {
 			ChartData x = new ChartData();
-			double[] accountBalances = {2000, 1800, 1800, 1750, 1500, 1271.5, 1269.9,
-							703.99, 253.5, 130, 120, 100, 80, 30, -55.55,
-							-150, -180, -250, -300, -355, -360, -370, -370,
-							-370, -370, -800, -955, -1053, -1199, -1530};
-			String[] balanceLabels = { "01.", "02.", "03.", "04.", "05.", "06.", "07.", "08.",
-				"09.", "10.", "11.", "12.", "13.", "14.", "15.", "16.",
-				"17.", "18.", "19.", "20.", "21.", "22.", "23.", "24.",
-				"25.", "26.", "27.", "28.", "29.", "30."};
 
 
             Account account = new Account();
             account.m_iban = "DE99999940000317899806";
-            //account.m_giveMoney=
-            account.LoadDays(90, 30);
+            if (id.Equals("givetake"))
+            {
+                account.m_giveMoney = true;
+                account.m_takeMoney = true;
+            }
+            else if (id.Equals("give"))
+            {
+                account.m_giveMoney = true;
+                account.m_takeMoney = false;
+            }
+            else if (id.Equals("take"))
+            {
+                account.m_giveMoney = false;
+                account.m_takeMoney = true;
+            }
+            account.LoadDays(20, 20);
             for (int i = 0; i < account.m_days.Count; i++)
             {
                 SingleDay day = account.m_days[i];
                 x.accountBalances.Add((double)day.m_realBalance);
-                if (id.Equals("withmomo"))
+                if (account.m_giveMoney|| account.m_takeMoney)
                 {
-                    x.momoBalances.Add((double)day.m_realBalance);
+                    x.momoBalances.Add((double)(day.m_realBalance+day.m_fictionalBalanceChange));
                 }
                 x.balanceLabels.Add(day.m_date.ToString("dd."));
             }

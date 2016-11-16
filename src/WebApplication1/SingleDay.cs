@@ -10,7 +10,7 @@ namespace WebApplication1
     public class SingleDay
     {
         public DateTime m_date;
-        private bool m_empty = false;
+        private bool m_empty = true;
         public bool IsEmpty
         {
             get
@@ -40,6 +40,20 @@ namespace WebApplication1
                     if(decimal.TryParse(reader["ba_balance"].ToString(), out m_realBalance))
                     {
                         m_empty = false;
+                        if(m_account.m_takeMoney)
+                        {
+                            if(m_realBalance<0m)
+                            {
+                                m_fictionalBalanceChange = -m_realBalance;
+                            }
+                        }
+                        if(m_account.m_giveMoney)
+                        {
+                            if (m_realBalance > m_account.m_sockel)
+                            {
+                                m_fictionalBalanceChange = -(m_realBalance- m_account.m_sockel);
+                            }
+                        }
                     }
                 }
             }
