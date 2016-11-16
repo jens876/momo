@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 
 namespace WebApplication1
 {
@@ -14,6 +15,20 @@ namespace WebApplication1
     {
         public Startup(IHostingEnvironment env)
         {
+            StaticProperties.m_hostingEnv = env;
+
+            String ConnectionString;
+            if (!StaticProperties.m_hostingEnv.IsProduction())
+            {
+                ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;";
+            }
+            else
+            {
+                ConnectionString = "server=172.30.86.135;user id=microcredit;password=M1crocred1t;persistsecurityinfo=True;port=3306;Encrypt=false;";
+            }
+            StaticProperties.m_mySqlConnection = new MySqlConnection(ConnectionString);
+            StaticProperties.m_mySqlConnection.Open();
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)

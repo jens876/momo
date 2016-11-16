@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
+using Microsoft.AspNetCore.Hosting;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,17 +18,9 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            String ConnectionString;
-            if(false)
-            {
-                ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;";
-            }
-            else
-            {
-                ConnectionString = "server=172.30.86.135;user id=microcredit;password=M1crocred1t;persistsecurityinfo=True;port=3306;Encrypt=false;";
-            }
-            MySqlConnection connection = new MySqlConnection(ConnectionString);
-            connection.Open();
+
+            MySqlConnection connection = StaticProperties.m_mySqlConnection;
+
 
             MySqlCommand command = new MySqlCommand("create database IF NOT EXISTS momo1db;", connection);
             command.ExecuteNonQuery();
