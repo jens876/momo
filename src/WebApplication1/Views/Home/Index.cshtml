@@ -6,10 +6,37 @@
 
 <h3>Sie befinden sich in Ihrem Mo|Mo Cockpit</h3>
 
-
-
-<canvas id="chartAction" width="1400" height="600"
-        style="border: solid 2px #000000"></canvas>
+<table id="statusTable" >
+    <tr>
+        <th style="border-right: thin black solid; text-align: center;">
+            Konto ausgleichen
+        </th>
+        <th style="border-right: thin black solid; text-align: center;">
+            Geld verleihen
+        </th>
+        <th style="border-right: thin black solid; border-bottom: thin black solid;">
+            Akt. Habenzins 2%
+        </th>
+        <th style="border-bottom: thin black solid;">
+            Verdient 18,50 €
+        </th>
+    </tr>
+    <tr>
+        <td style="border-right: thin black solid">
+            <div id="ausgleichstatus" class="statusbar" style="background-color: #00ff90;"></div>
+        </td>
+        <td style="border-right: thin black solid">
+            <div id="ausgleichstatus" class="statusbar" style="background-color: #ff0000;"></div>
+        </td>
+        <th style="border-right: thin black solid">
+            Akt. Sollzins 4%
+        </th>
+        <th>
+            Gespart 11,80 €
+        </th>
+    </tr>
+</table>
+<canvas id="chartAction" style="width: 100%"></canvas>
 <form id="idForm1">
     <input name="idCheck1" id="idCheck1" type="checkbox"><label for="idCheck1">Ich möchte mein Konto automatisch ausgleichen lassen</label><br />
     <input name="idCheck2" id="idCheck2" type="checkbox"><label for="idCheck2">Ich möchte Geld verleihen</label>
