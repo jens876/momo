@@ -30,11 +30,29 @@ namespace WebApplication1.Controllers
             command = new MySqlCommand("use momo1db;", connection);
             command.ExecuteNonQuery();
 
-            command = new MySqlCommand("create table IF NOT EXISTS customers (cu_id integer AUTO_INCREMENT,cu_name VARCHAR(255) NOT NULL,PRIMARY KEY(cu_id));", connection);
+            command = new MySqlCommand("create table IF NOT EXISTS balances (ba_debtorAccountNumber varchar(22), ba_date date,ba_balance double);", connection);
             command.ExecuteNonQuery();
+
+            command = new MySqlCommand("insert into balances(ba_debtorAccountNumber,ba_date,ba_balance) values (\"DE99999940000317899806\",\"2016-11-16\",12.34);", connection);
+            command.ExecuteNonQuery();
+
+            command = new MySqlCommand("select * from balances", connection);
+
+            String ret="";
+            List<string> retx = new List<string> { };
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    ret = reader["ba_debtorAccountNumber"].ToString();
+                    retx.Add(ret);
+                }
+            }
 
             connection.Close();
             
+            //IEnumerable<string> retx=new List<string>;
+            return retx;
 
             return new string[] { "value1", "value2" };
         }
