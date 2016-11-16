@@ -51,10 +51,7 @@ namespace WebApplication1.Controllers
 
             connection.Close();
             
-            //IEnumerable<string> retx=new List<string>;
-            return retx;
-
-            return Json(new string[] { "value1", "value2" });
+            return Json(retx);
         }
 
         // GET api/values/5
