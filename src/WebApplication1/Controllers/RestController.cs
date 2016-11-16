@@ -43,7 +43,7 @@ namespace WebApplication1.Controllers
                 account.m_giveMoney = false;
                 account.m_takeMoney = true;
             }
-            account.LoadDays(20, 20);
+            account.LoadDays(40, 20);
             for (int i = 0; i < account.m_days.Count; i++)
             {
                 SingleDay day = account.m_days[i];

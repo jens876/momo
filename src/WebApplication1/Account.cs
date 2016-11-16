@@ -33,7 +33,9 @@ namespace WebApplication1
                 {
                     if(m_days.Count()>0)
                     {
-                        m_days.Add(m_days.Last());
+                        SingleDay lastDay = m_days.Last();
+                        lastDay.m_date = loopingDate;
+                        m_days.Add(lastDay);
                     }
                 }
             }
