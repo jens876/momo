@@ -18,7 +18,16 @@ namespace WebApplication1
             StaticProperties.m_hostingEnv = env;
 
             String ConnectionString;
-            if (StaticProperties.m_hostingEnv.IsProduction())
+            bool production= StaticProperties.m_hostingEnv.IsProduction();
+            if(env.ContentRootPath.Contains("hem"))
+            {
+                production = false;
+            }
+            else
+            {
+                production = true;
+            }
+            if (!production)
             {
                 ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;";
             }
