@@ -28,6 +28,29 @@ function check() {
 	f.noValidate = !f.noValidate;
 }
 
+$(document).ready(function () {
+
+    var x = $('#clickmeplease');
+    x.click(function ()
+    {
+        // Assign handlers immediately after making the request,
+        // and remember the jqXHR object for this request
+        var jqxhr = $.ajax( apiUrl )
+          .done(function(data) {
+              var chart = chartInstance1;
+              var data = chart.config.data.datasets[0].data;
+              for (var i = 0; i < data.length; ++i) {
+                  data[i] += 100;
+              }
+              chart.update();
+          })
+          .fail(function() {
+              alert( "error" );
+          });
+        // Perform other work here ...
+    });
+});
+
 window.onerror = fehlerBehandlung;
 // document.write("<p>First!<p>");
 try {
