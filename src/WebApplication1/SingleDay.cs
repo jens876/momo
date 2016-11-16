@@ -39,6 +39,8 @@ namespace WebApplication1
                 {
                     if(decimal.TryParse(reader["ba_balance"].ToString(), out m_realBalance))
                     {
+                        m_realBalance /= 100m;
+                        m_realBalance -= 600m;
                         m_empty = false;
                         if(m_account.m_takeMoney)
                         {
