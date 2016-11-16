@@ -28,7 +28,7 @@ namespace WebApplication1.Controllers
 
             Account account = new Account();
             account.m_iban = "DE00999940000667334953"; // prod
-            account.m_iban = "DE99999940000317899806";
+            //account.m_iban = "DE99999940000317899806";
             if (id.Equals("givetake"))
             {
                 account.m_giveMoney = true;
@@ -68,8 +68,9 @@ namespace WebApplication1.Controllers
 
 
 			Account account = new Account();
-			account.m_iban = "DE00999940000667334953";// "DE99999940000317899806";
-			if (id.Equals("givetake"))
+            account.m_iban = "DE00999940000667334953"; // prod
+            //account.m_iban = "DE99999940000317899806";
+            if (id.Equals("givetake"))
 			{
 				account.m_giveMoney = true;
 				account.m_takeMoney = true;
@@ -84,6 +85,7 @@ namespace WebApplication1.Controllers
 				account.m_giveMoney = false;
 				account.m_takeMoney = true;
 			}
+            account.m_sockel = (decimal)sockelbetrag;
 			account.LoadDays(20, 20);
 			for (int i = 0; i < account.m_days.Count; i++)
 			{
