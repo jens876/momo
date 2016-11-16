@@ -28,7 +28,9 @@ function check() {
 function getData(id) {
     // Assign handlers immediately after making the request,
     // and remember the jqXHR object for this request
-    var jqxhr = $.ajax(apiUrl + '/' + id).done(function (data) {
+    var sockelbetrag = $('#sockelbetrag').val();
+
+    var jqxhr = $.ajax(apiUrl + '/' + id + '/' + sockelbetrag).done(function (data) {
         var chart = chartInstance1;
         chart.config.data.datasets[0].data = data.momoBalances;
         chart.config.data.datasets[1].data = data.accountBalances;
