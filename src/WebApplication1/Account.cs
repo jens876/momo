@@ -12,21 +12,25 @@ namespace WebApplication1
 
         public void LoadDays(int historicalDays,int futureDays)
         {
-            m_days.Clear();
-            LoadHistoricalDays(historicalDays);
-            
-        }
+            m_days=new List<SingleDay> { };
 
-        void LoadHistoricalDays(int days)
-        {
-            DateTime date=DateTime.Now;
-            for (int i = 0; i < days; i++)
+            DateTime loopingDate = DateTime.Now;
+            loopingDate=loopingDate.AddDays(-historicalDays);
+            DateTime endDate = DateTime.Now;
+            for (; loopingDate<=endDate; loopingDate=loopingDate.AddDays(1))
             {
                 SingleDay day = new SingleDay(this);
-                day.Load(date);
-                if(!day.IsEmpty)
+                day.Load(loopingDate);
+                if (!day.IsEmpty)
                 {
                     m_days.Add(day);
+                }
+                else
+                {
+                    if(m_days.Count()>0)
+                    {
+                        m_days.Add(m_days.Last());
+                    }
                 }
             }
 

@@ -33,14 +33,14 @@ namespace WebApplication1
             m_date = date;
 
             MySqlCommand command = new MySqlCommand("select * from balances where ba_date=\""+ date.ToString("yyyy-MM-dd")+ "\" and ba_debtorAccountNumber=\""+m_account.m_iban+"\"", StaticProperties.m_mySqlConnection);
-            String ret = "";
-            List<string> retx = new List<string> { };
             using (MySqlDataReader reader = command.ExecuteReader())
             {
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    ret = reader["ba_debtorAccountNumber"].ToString();
-                    retx.Add(ret);
+                    if(decimal.TryParse(reader["ba_balance"].ToString(), out m_realBalance))
+                    {
+                        m_empty = false;
+                    }
                 }
             }
         }
