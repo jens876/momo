@@ -115,7 +115,7 @@ try {
 					fill : false,
 					lineTension : 0.1,
 					backgroundColor : "rgba(255,100,100,0.4)",
-					borderColor : "rgba(255,255,255,1)",
+					borderColor : "rgba(0,0,0,1)",
 					borderCapStyle : 'butt',
 					borderDash : [],
 					borderDashOffset : 0.0,
