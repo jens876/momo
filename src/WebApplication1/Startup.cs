@@ -38,6 +38,9 @@ namespace WebApplication1
             StaticProperties.m_mySqlConnection = new MySqlConnection(ConnectionString);
             StaticProperties.m_mySqlConnection.Open();
 
+            MySqlCommand command = new MySqlCommand("use momo1db;", StaticProperties.m_mySqlConnection);
+            command.ExecuteNonQuery();
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)

@@ -27,7 +27,8 @@ namespace WebApplication1.Controllers
 
         public IActionResult Index()
         {
-            return View();
+			ViewData["apiUrl"] = GetApiUrl();
+			return View();
         }
 
 		public IActionResult Jens()
