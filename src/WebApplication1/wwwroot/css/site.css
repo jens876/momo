@@ -36,3 +36,28 @@ textarea {
     display: none
   }
 }
+
+#statusTable {
+    border: thin black solid;
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+}
+
+#statusTable tr {
+    height: 50px;
+}
+
+#statusTable td, #statusTable th {
+    padding: 5px;
+    width: 25%;
+    text-align: right;
+}
+
+div.statusbar {
+    border: thin solid black;
+    padding: 15px;
+    display:block;
+    height: 20px;
+    border-radius: 5px;
+}
