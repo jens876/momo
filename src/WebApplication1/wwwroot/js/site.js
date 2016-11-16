@@ -139,7 +139,7 @@ $(document)
 										label : "Dispowarnung",
 										fill : false,
 										lineTension : 0.1,
-										backgroundColor : "rgba(255,100,100,0.4)",
+										backgroundColor : schwarz,
 										borderColor : schwarz,
 										borderCapStyle : 'butt',
 										borderDash : [],
