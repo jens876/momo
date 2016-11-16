@@ -212,6 +212,20 @@ $(document)
 function getDependingData() {
 	var checkbox1Checked = $('#idCheck1')[0].checked;
 	var checkbox2Checked = $('#idCheck2')[0].checked;
+	if (checkbox1Checked)
+	{
+	    $('#ausgleichstatus').css("background-color", "#00ff90");
+	}
+	else
+	{
+	    $('#ausgleichstatus').css("background-color", "#f00");
+	}
+	if (checkbox2Checked) {
+	    $('#verleihstatus').css("background-color", "#00ff90");
+	}
+	else {
+	    $('#verleihstatus').css("background-color", "#f00");
+	}
 	if (checkbox1Checked && checkbox2Checked) {
 		getData('givetake');
 	} else if (checkbox1Checked) {
