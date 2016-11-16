@@ -20,7 +20,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] //possible values: 'give', 'take', 'givetake' and 'plain'
         public JsonResult Get(string id)
         {
 			ChartData x = new ChartData();
@@ -34,11 +34,7 @@ namespace WebApplication1.Controllers
 				"25.", "26.", "27.", "28.", "29.", "30."};
 			x.accountBalances.AddRange(accountBalances);
 			x.balanceLabels.AddRange(balanceLabels);
-			if (id.Equals("withoutmomo"))
-			{
-
-			}
-			else if (id.Equals("withmomo"))
+			if (id.Equals("givetake"))
 			{
 				double[] momoBalances = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 							0, 0, -50, -30, 0, 0, 0, 0, 0, -200, 0, 0, 0,
