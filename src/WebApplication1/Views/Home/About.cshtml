@@ -5,13 +5,13 @@
 <h3>@ViewData["Message"]</h3>
 
 <p>Use this area to provide additional information.</p>
-	<canvas id="customerInfo" width="2800" height="180"
+	<canvas id="customerInfo" width="1400" height="180"
 		style="border: solid 2px #000000">
 	</canvas>
-	<canvas id="chartAction" width="2800" height="1200"
+	<canvas id="chartAction" width="1400" height="600"
 		style="border: solid 2px #000000">
 	</canvas>
-	<canvas id="chartNoAction" width="2800" height="1200"
+	<canvas id="chartNoAction" width="1400" height="600"
 		style="border: solid 2px #000000">
 	</canvas>
 	<form id="idForm1">
@@ -22,8 +22,9 @@
 		<input id="idCheck2" type="checkbox"> 100 € Geld soll immer da
 		sein
 	</form>
+@section scripts {
 	<script>
-	//	window.onerror = fehlerBehandlung;
+		window.onerror = fehlerBehandlung;
 		// document.write("<p>First!<p>");
 		try {
 			//document.write("<p>Vor allem!</p>");
@@ -36,7 +37,13 @@
 			ctCustomer.fillStyle = "#000000";
 			ctCustomer.lineWidth = 1;
 			ctCustomer.strokeStyle = "#000000";
-			ctCustomer.font = "italic bold 50px Courier";
+			ctCustomer.font = "italic bold 24px Courier";
+			var gradient=ctCustomer.createLinearGradient(0,0,cCustomer.width,0);
+			gradient.addColorStop("0","magenta");
+			gradient.addColorStop("0.5","blue");
+			gradient.addColorStop("1.0","red");
+			// Fill with gradient
+			ctCustomer.fillStyle=gradient;
 
 			//textInCanvas(ctCustomer);
 			textInCanvas("His majesty Henry VIII. (keine Aktion) - vorhandenes Geld");
@@ -74,10 +81,14 @@
 		data.labels = [ "01.", "02.", "03.", "04.", "05.", "06.", "07.", "08.",
 				"09.", "10.", "11.", "12.", "13.", "14.", "15.", "16.", "17.",
 				"18.", "19.", "20.", "21.", "22.", "23.", "24.", "25.", "26.",
-				"27.", "28.", "29.", "30.", ], data.datasets[0].data = [ 65,
+				"27.", "28.", "29.", "30.", ], 
+		data.datasets[0].data[0] = [ 65,
 				59, 80, 81, 56, 55, 40, 32, 55, 12, 65, 59, 80, 81, 56, 55, 40,
 				32, 55, 12, 65, 59, 80, 81, 56, 55, 40, 32, 55, 12 ];
-
+		data.datasets[0].data[1] = [ 81,
+				56, 55, 40, 32, 55, 12, 65, 59, 80, 81, 56, 55, 40,	32, 55, 12, 
+				65, 59, 80, 81, 56, 55, 40, 32, 55, 12, 65, 59, 80 ];
+		
 		var ctxChartAction = document.getElementById("chartAction");
 		var ctxChartNoAction = document.getElementById("chartNoAction");
 
@@ -97,3 +108,4 @@
 		});
 		meinHandler("idCheck1","click", check);
 	</script>
+}

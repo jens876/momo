@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApplication1.Controllers
 {
@@ -23,7 +24,20 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public IActionResult About()
+		public IActionResult Jens()
+		{
+			HttpRequest x = HttpContext.Request;
+			String myPathToUse = x.Scheme + "://" + x.Host + (x.PathBase.HasValue ? "/" + x.PathBase : "") + "/api/data/1111";
+			Task<string> task = GetProductAsync(myPathToUse);
+			task.Wait();
+
+			ViewData["Message"]= myPathToUse;
+			ViewData["Response"] = task.Result;
+
+			return View();
+		}
+
+		public IActionResult About()
         {
 
             Product product = new Product();
@@ -65,13 +79,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult Contact()
         {
-            Task<String> task = GetProductAsync("http://localhost:3167/api/tc");
-            task.Wait();
-
-            String response = task.Result;
-
-
-            ViewData["Message"] = response;
+            ViewData["Message"] = "Blubb";
 
             return View();
         }

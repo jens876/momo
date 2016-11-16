@@ -15,7 +15,7 @@ namespace WebApplication1.Controllers
     {
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public JsonResult Get()
         {
             MySqlConnection connection = new MySqlConnection
             {
@@ -54,7 +54,7 @@ namespace WebApplication1.Controllers
             //IEnumerable<string> retx=new List<string>;
             return retx;
 
-            return new string[] { "value1", "value2" };
+            return Json(new string[] { "value1", "value2" });
         }
 
         // GET api/values/5
