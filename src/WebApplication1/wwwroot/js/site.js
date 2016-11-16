@@ -121,7 +121,7 @@ try {
 					borderDash : [],
 					borderDashOffset : 0.0,
 					borderJoinStyle : 'miter',
-					borderWidth : 20,
+					borderWidth : 5,
 					pointBorderColor : "rgba(0,0,0,1)",
 					pointBackgroundColor : "#fff",
 					pointBorderWidth : 1,
