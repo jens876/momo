@@ -165,7 +165,7 @@ $(document)
 										label : "Schuldenwarnung",
 										fill : false,
 										lineTension : 0.1,
-										backgroundColor : "rgba(255,100,100,0.4)",
+										backgroundColor : rot,
 										borderColor : rot,
 										borderCapStyle : 'butt',
 										borderDash : [],
