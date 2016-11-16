@@ -8,7 +8,7 @@ namespace WebApplication1
     public class Account
     {
         public String m_iban;
-        List<SingleDay> m_days;
+        public List<SingleDay> m_days;
 
         public void LoadDays(int historicalDays,int futureDays)
         {

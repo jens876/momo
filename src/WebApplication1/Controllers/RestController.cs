@@ -27,9 +27,19 @@ namespace WebApplication1.Controllers
 				"09.", "10.", "11.", "12.", "13.", "14.", "15.", "16.",
 				"17.", "18.", "19.", "20.", "21.", "22.", "23.", "24.",
 				"25.", "26.", "27.", "28.", "29.", "30."};
-			x.accountBalances.AddRange(accountBalances);
-			x.momoBalances.AddRange(momoBalances);
-			x.balanceLabels.AddRange(balanceLabels);
+
+            Account account = new Account();
+            account.m_iban = "DE99999940000317899806";
+
+            account.LoadDays(90, 30);
+            for(int i=0;i<account.m_days.Count;i++)
+            {
+                SingleDay day = account.m_days[i];
+                x.accountBalances.Add((double)day.m_realBalance);
+                x.momoBalances.Add((double)day.m_realBalance);
+                x.balanceLabels.Add(day.m_date.ToString("dd."));
+            }
+
 			return Json(x);
         }
 
