@@ -17,11 +17,16 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            MySqlConnection connection = new MySqlConnection
+            String ConnectionString;
+            if(false)
             {
-                //ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;"
-                ConnectionString = "server=172.30.86.135;user id=microcredit;password=M1crocred1t;persistsecurityinfo=True;port=3306;Encrypt=false;"
-            };
+                ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;";
+            }
+            else
+            {
+                ConnectionString = "server=172.30.86.135;user id=microcredit;password=M1crocred1t;persistsecurityinfo=True;port=3306;Encrypt=false;";
+            }
+            MySqlConnection connection = new MySqlConnection(ConnectionString);
             connection.Open();
 
             MySqlCommand command = new MySqlCommand("create database IF NOT EXISTS momo1db;", connection);

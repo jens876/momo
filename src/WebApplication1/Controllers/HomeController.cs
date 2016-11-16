@@ -79,7 +79,12 @@ namespace WebApplication1.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Blubb";
+            HttpRequest x = HttpContext.Request;
+            String myPathToUse = x.Scheme + "://" + x.Host + x.PathBase + "/api/tc";
+            Task<string> task = GetProductAsync(myPathToUse);
+            task.Wait();
+
+            ViewData["Message"] = task.Result;
 
             return View();
         }
