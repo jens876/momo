@@ -55,6 +55,7 @@ try {
 
 	var dg = -500;
 	var wg = -1000;
+	var ml = 800;
 	
 	var data = {
 		labels : [ "01.", "02.", "03.", "04.", "05.", "06.", "07.", "08.",
@@ -109,6 +110,33 @@ try {
 							703.99, 253.5, 130, 120, 100, 80, 30, -55.55,
 							-150, -180, -250, -300, -355, -360, -370, -370,
 							-370, -370, -800, -955, -1053, -1199, -1530 ],
+					spanGaps : false,
+				},
+				{
+					label : "Sockelbetrag",
+					fill : false,
+					lineTension : 0.1,
+					backgroundColor : "rgba(255,100,100,0.4)",
+					borderColor : "rgba(0,255,0,1)",
+					borderCapStyle : 'butt',
+					borderDash : [],
+					borderDashOffset : 0.0,
+					borderJoinStyle : 'miter',
+					borderWidth : 2,
+					pointBorderColor : "rgba(0,255,0,1)",
+					pointBackgroundColor : "#fff",
+					pointBorderWidth : 2,
+					pointHoverRadius : 5,
+					pointHoverBackgroundColor : "rgba(255,100,100,0.4)",
+					pointHoverBorderColor : "rgba(255,0,0,1)",
+					pointHoverBorderWidth : 2,
+					pointRadius : 1,
+					pointHitRadius : 10,
+					data : [ ml, ml, ml, ml, ml, ml,  ml,
+						 	ml,  ml, ml, ml, ml, ml, ml, ml,
+						 	ml,  ml, ml, ml, ml, ml, ml, ml,
+						 	ml,  ml, ml, ml, ml, ml, ml
+						   ],
 					spanGaps : false,
 				},
 				{
