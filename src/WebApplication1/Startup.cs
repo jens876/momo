@@ -18,7 +18,7 @@ namespace WebApplication1
             StaticProperties.m_hostingEnv = env;
 
             String ConnectionString;
-            if (!StaticProperties.m_hostingEnv.IsProduction())
+            if (StaticProperties.m_hostingEnv.IsProduction())
             {
                 ConnectionString = "server=localhost;user id=root;password=x;persistsecurityinfo=True;port=3306;Encrypt=false;";
             }
