@@ -72,6 +72,7 @@ try {
 	textInCanvas("His majesty Henry VIII. (keine Aktion) - vorhandenes Geld");
 
 	var dg = -500;
+	var wg = -1000;
 	
 	var data = {
 		labels : [ "01.", "02.", "03.", "04.", "05.", "06.", "07.", "08.",
@@ -151,6 +152,32 @@ try {
 						 	dg,  dg, dg, dg, dg, dg, dg, dg,
 						 	dg,  dg, dg, dg, dg, dg, dg, dg,
 						 	dg,  dg, dg, dg, dg, dg, dg
+						   ],
+					spanGaps : false,
+				},
+				{
+					label : "Bloß nicht tiefer (20%)",
+					fill : false,
+					lineTension : 0.1,
+					backgroundColor : "rgba(255,100,100,0.4)",
+					borderColor : "rgba(0,255,0,1)",
+					borderCapStyle : 'butt',
+					borderDash : [],
+					borderDashOffset : 0.0,
+					borderJoinStyle : 'miter',
+					pointBorderColor : "rgba(0,255,0,1)",
+					pointBackgroundColor : "#fff",
+					pointBorderWidth : 1,
+					pointHoverRadius : 5,
+					pointHoverBackgroundColor : "rgba(255,100,100,0.4)",
+					pointHoverBorderColor : "rgba(255,0,0,1)",
+					pointHoverBorderWidth : 2,
+					pointRadius : 1,
+					pointHitRadius : 10,
+					data : [ wg, wg, wg, wg, wg, wg,  wg,
+						 	wg,  wg, wg, wg, wg, wg, wg, wg,
+						 	wg,  wg, wg, wg, wg, wg, wg, wg,
+						 	wg,  wg, wg, wg, wg, wg, wg
 						   ],
 					spanGaps : false,
 				} ]
