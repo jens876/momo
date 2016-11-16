@@ -40,8 +40,7 @@ function getData(id) {
         var sockelbetrag = $('#sockelbetrag').val();
 
         chart.config.data.datasets[2].data = [];
-        for (var i = 0; i < dataCount; i++)
-        {
+        for (var i = 0; i < dataCount; i++) {
             chart.config.data.datasets[2].data.push(sockelbetrag);
             chart.config.data.datasets[3].data.push(-500);
             chart.config.data.datasets[4].data.push(-1000);
@@ -207,7 +206,14 @@ $(document).ready(function () {
             type: 'line',
             data: data,
             options: {
-                responsive: false
+                responsive: false,
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }]
+                }
             }
         });
 
