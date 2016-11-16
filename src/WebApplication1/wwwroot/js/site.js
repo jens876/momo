@@ -68,7 +68,7 @@ $(document)
 										lineTension : 0.1,
 										backgroundColor : "rgba(75,192,192,1)",
 										borderColor : "rgba(75,192,192,1)",
-										borderCapStyle : 'butt',
+										borderCapStyle : 'square',
 										borderDash : [],
 										borderDashOffset : 0.0,
 										borderJoinStyle : 'miter',
