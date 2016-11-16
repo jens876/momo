@@ -33,7 +33,10 @@ namespace WebApplication1
                 {
                     if(m_days.Count()>0)
                     {
-                        SingleDay lastDay = m_days.Last();
+                        SingleDay lastDay = new SingleDay(this);
+                        lastDay.m_fictionalBalanceChange=m_days.Last().m_fictionalBalanceChange;
+                        lastDay.m_realBalance = m_days.Last().m_realBalance;
+                        lastDay.m_realBalanceChange = m_days.Last().m_realBalanceChange;
                         lastDay.m_date = loopingDate;
                         m_days.Add(lastDay);
                     }
