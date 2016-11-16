@@ -58,6 +58,7 @@ $(document).ready(function () {
         var dg = -500;
         var wg = -1000;
         var ml = 800;
+        var gruen = "rgba(0,255,0,1)";
 
         var data = {
             labels: [],
@@ -110,8 +111,9 @@ $(document).ready(function () {
                         label: "Sockelbetrag",
                         fill: false,
                         lineTension: 0.1,
-                        backgroundColor: "rgba(255,100,100,0.4)",
-                        borderColor: "rgba(0,255,0,1)",
+                        backgroundColor: "rgba(0,100,100,0.4)",
+                        //borderColor: "rgba(0,255,0,1)",
+                        borderColor: gruen,
                         borderCapStyle: 'butt',
                         borderDash: [],
                         borderDashOffset: 0.0,
