@@ -19,6 +19,12 @@ namespace WebApplication1.Controllers
     {
         static HttpClient m_httpClient = new HttpClient();
 
+		public String GetApiUrl()
+		{
+			HttpRequest x = HttpContext.Request;
+			return x.Scheme + "://" + x.Host + (x.PathBase.HasValue ? "/" + x.PathBase : "") + "/api/data";
+		}
+
         public IActionResult Index()
         {
             return View();
@@ -27,12 +33,13 @@ namespace WebApplication1.Controllers
 		public IActionResult Jens()
 		{
 			HttpRequest x = HttpContext.Request;
-			String myPathToUse = x.Scheme + "://" + x.Host + (x.PathBase.HasValue ? "/" + x.PathBase : "") + "/api/data/1111";
-			Task<string> task = GetProductAsync(myPathToUse);
+			String apiUrl = GetApiUrl();
+			Task<string> task = GetProductAsync(apiUrl+"/111");
 			task.Wait();
 
-			ViewData["Message"]= myPathToUse;
+			ViewData["Message"]= apiUrl;
 			ViewData["Response"] = task.Result;
+			ViewData["apiUrl"] = GetApiUrl();
 
 			return View();
 		}
@@ -49,8 +56,10 @@ namespace WebApplication1.Controllers
             string output = JsonConvert.SerializeObject(product);
 
             ViewData["Message"] = "Your application description page.";
+			ViewData["apiUrl"] = GetApiUrl();
 
-            return View();
+
+			return View();
         }
 
 

@@ -31,19 +31,24 @@ function check() {
 $(document).ready(function () {
 
     var x = $('#clickmeplease');
-    if (x)
+    x.click(function ()
     {
-        x.click(function ()
-        {
-            var chart = chartInstance1;
-            var data = chart.config.data.datasets[0].data;
-            for (var i = 0; i < data.length; ++i) {
-                data[i] += 100;
-            }
-            chart.update();
-        });
-    }
-
+        // Assign handlers immediately after making the request,
+        // and remember the jqXHR object for this request
+        var jqxhr = $.ajax( apiUrl )
+          .done(function(data) {
+              var chart = chartInstance1;
+              var data = chart.config.data.datasets[0].data;
+              for (var i = 0; i < data.length; ++i) {
+                  data[i] += 100;
+              }
+              chart.update();
+          })
+          .fail(function() {
+              alert( "error" );
+          });
+        // Perform other work here ...
+    });
 });
 
 window.onerror = fehlerBehandlung;
@@ -73,6 +78,7 @@ try {
 
 	var dg = -500;
 	var wg = -1000;
+	var ml = 800;
 	
 	var data = {
 		labels : [ "01.", "02.", "03.", "04.", "05.", "06.", "07.", "08.",
@@ -130,6 +136,33 @@ try {
 					spanGaps : false,
 				},
 				{
+					label : "Sockelbetrag",
+					fill : false,
+					lineTension : 0.1,
+					backgroundColor : "rgba(255,100,100,0.4)",
+					borderColor : "rgba(0,255,0,1)",
+					borderCapStyle : 'butt',
+					borderDash : [],
+					borderDashOffset : 0.0,
+					borderJoinStyle : 'miter',
+					borderWidth : 2,
+					pointBorderColor : "rgba(0,255,0,1)",
+					pointBackgroundColor : "#fff",
+					pointBorderWidth : 2,
+					pointHoverRadius : 5,
+					pointHoverBackgroundColor : "rgba(255,100,100,0.4)",
+					pointHoverBorderColor : "rgba(255,0,0,1)",
+					pointHoverBorderWidth : 2,
+					pointRadius : 1,
+					pointHitRadius : 10,
+					data : [ ml, ml, ml, ml, ml, ml,  ml,
+						 	ml,  ml, ml, ml, ml, ml, ml, ml,
+						 	ml,  ml, ml, ml, ml, ml, ml, ml,
+						 	ml,  ml, ml, ml, ml, ml, ml
+						   ],
+					spanGaps : false,
+				},
+				{
 					label : "Dispogrenze (8%)",
 					fill : false,
 					lineTension : 0.1,
@@ -139,9 +172,10 @@ try {
 					borderDash : [],
 					borderDashOffset : 0.0,
 					borderJoinStyle : 'miter',
+					borderWidth : 2,
 					pointBorderColor : "rgba(0,0,0,1)",
 					pointBackgroundColor : "#fff",
-					pointBorderWidth : 1,
+					pointBorderWidth : 2,
 					pointHoverRadius : 5,
 					pointHoverBackgroundColor : "rgba(255,100,100,0.4)",
 					pointHoverBorderColor : "rgba(255,0,0,1)",
@@ -160,14 +194,14 @@ try {
 					fill : false,
 					lineTension : 0.1,
 					backgroundColor : "rgba(255,100,100,0.4)",
-					borderColor : "rgba(0,255,0,1)",
+					borderColor : "rgba(255,0,0,1)",
 					borderCapStyle : 'butt',
 					borderDash : [],
 					borderDashOffset : 0.0,
 					borderJoinStyle : 'miter',
-					pointBorderColor : "rgba(0,255,0,1)",
+					pointBorderColor : "rgba(255,0,0,1)",
 					pointBackgroundColor : "#fff",
-					pointBorderWidth : 1,
+					pointBorderWidth : 2,
 					pointHoverRadius : 5,
 					pointHoverBackgroundColor : "rgba(255,100,100,0.4)",
 					pointHoverBorderColor : "rgba(255,0,0,1)",
@@ -202,5 +236,5 @@ var chartInstance2 = new Chart(ctxChartNoAction, {
 		responsive : false
 	}
 });
-meinHandler("#idCheck1", "click", check);
+meinHandler("idCheck1", "click", check);
 
